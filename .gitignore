@@ -1,0 +1,17 @@
+.project
+
+.settings/
+
+.classpath
+
+.project
+
+target/
+
+src/main/webapp/WEB-INF/config/
+
+src/main/webapp/WEB-INF/views/static/
+
+src/main/webapp/WEB-INF/web.xml
+
+pom.xml

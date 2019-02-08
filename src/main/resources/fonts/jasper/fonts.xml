@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<fontFamilies>
+
+	<fontFamily name="custom">
+		<normal><![CDATA[fonts/jasper/comic.ttf]]></normal>
+		<bold><![CDATA[fonts/jasper/comicbd.ttf]]></bold>
+		<pdfEmbedded><![CDATA[true]]></pdfEmbedded>
+	</fontFamily>
+
+	<fontFamily name="ipaexg">
+		<normal>fonts/jasper/ipaexg/ipaexg.ttf</normal>
+		<pdfEncoding>Identity-H</pdfEncoding>
+		<pdfEmbedded>true</pdfEmbedded>
+	</fontFamily>
+
+	<fontFamily name="ipaexm">
+		<normal>fonts/jasper/ipaexm/ipaexm.ttf</normal>
+		<pdfEncoding>Identity-H</pdfEncoding>
+		<pdfEmbedded>true</pdfEmbedded>
+	</fontFamily>
+
+</fontFamilies>

@@ -1,0 +1,1268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="76178416-5ab8-47bc-8ab3-2f278d6c9cc3">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Dataset1" uuid="c4b5c274-9579-4d4c-ae62-ca446ba9f8d3">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="name" class="java.lang.String"/>
+		<field name="productName" class="java.lang.String"/>
+		<field name="quantity" class="java.lang.Integer"/>
+		<field name="unit" class="java.lang.String"/>
+		<field name="unitPrice" class="java.lang.Double"/>
+		<field name="amount" class="java.lang.Double"/>
+		<field name="standardUnitPrice" class="java.lang.Double"/>
+		<field name="remarks" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="Dataset2" uuid="22efcf79-81e1-4877-bbd0-23dc134b6524">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="constructionNumber" class="java.lang.String"/>
+		<field name="propertyName" class="java.lang.String"/>
+		<field name="constructionCategoryName" class="java.lang.String"/>
+		<field name="totalAmount" class="java.lang.Double"/>
+		<field name="quotationItems" class="java.util.List"/>
+	</subDataset>
+	<parameter name="date" class="java.lang.String"/>
+	<parameter name="customerName" class="java.lang.String"/>
+	<parameter name="constructionNumber" class="java.lang.String"/>
+	<parameter name="propertyName" class="java.lang.String"/>
+	<parameter name="postMessage" class="java.lang.String"/>
+	<parameter name="contactUsername" class="java.lang.String"/>
+	<parameter name="paymentTerms" class="java.lang.String"/>
+	<parameter name="estimatedExpirationDate" class="java.lang.String"/>
+	<parameter name="deliveryDate" class="java.lang.String"/>
+	<parameter name="deliveryPlace" class="java.lang.String"/>
+	<parameter name="sparePartsCost" class="java.lang.String"/>
+	<parameter name="branchName" class="java.lang.String"/>
+	<parameter name="postalCode" class="java.lang.String"/>
+	<parameter name="address" class="java.lang.String"/>
+	<parameter name="telephone" class="java.lang.String"/>
+	<parameter name="fax" class="java.lang.String"/>
+	<parameter name="totalAmount" class="java.lang.Double"/>
+	<parameter name="totalAmountWithTax" class="java.lang.String"/>
+	<parameter name="quotationDetails" class="java.util.List"/>
+	<parameter name="quotationHeaders" class="java.util.List"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="80">
+			<frame>
+				<reportElement x="-10" y="20" width="820" height="50" uuid="0e3f20a1-6b1d-45e5-97b3-5e74764ca792">
+					<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.intValue() > 1)]]></printWhenExpression>
+				</reportElement>
+				<textField>
+					<reportElement x="1" y="26" width="800" height="23" uuid="5ec218e4-4ade-47f1-950f-0de6f1631cd3"/>
+					<textElement textAlignment="Center">
+						<font fontName="ipaexg" size="22" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["明　細　書"]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Master">
+					<reportElement positionType="Float" x="687" y="37" width="110" height="12" uuid="da5a6f0b-f8c6-4aee-866d-91e9c4737d81"/>
+					<textElement>
+						<font fontName="ipaexm" size="8" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[msg("Page {0} / {1}", $V{MASTER_CURRENT_PAGE} - 1, $V{MASTER_TOTAL_PAGES} - 1)]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement positionType="Float" x="687" y="26" width="110" height="11" uuid="77c0d1e3-7897-4d8b-853f-4d96ff0191b7"/>
+					<box topPadding="0"/>
+					<textElement textAlignment="Left">
+						<font fontName="ipaexm" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA["DATE : " + $P{date}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="460" splitType="Stretch">
+			<frame>
+				<reportElement x="35" y="-33" width="738" height="453" uuid="5e9b43b3-843e-46ce-80be-b55ca39eaa6a"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textField>
+					<reportElement x="592" y="56" width="130" height="20" uuid="603bfcbd-efdb-4c96-b025-d9cc72634b4c"/>
+					<textElement>
+						<font fontName="ipaexg" size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="591" y="40" width="110" height="1" uuid="ca521e30-60aa-49ee-97c5-d0cc7e79e427"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</line>
+				<textField evaluationTime="Report">
+					<reportElement positionType="FixRelativeToBottom" x="8" y="24" width="700" height="36" uuid="84816193-fcda-4cd4-9424-1fc1cd925e65"/>
+					<textElement textAlignment="Center">
+						<font fontName="ipaexg" size="26" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["御　　見　　積　　書"]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="17" y="122" width="269" height="1" uuid="cfb0cf0e-c707-476e-af8e-e5289623ccf1"/>
+					<graphicElement>
+						<pen lineWidth="1.0" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement x="-2" y="453" width="740" height="1" uuid="338c40ff-240a-496c-a777-0ca8d6d27ddc"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</line>
+				<textField>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="47" y="136" width="190" height="10" uuid="66572448-c93e-468c-8a77-a20998fe2701"/>
+					<textElement>
+						<font fontName="ipaexg" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["下記の通りお見積り申しあげます。"]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="17" y="100" width="300" height="22" uuid="68203904-1a88-4b75-bb78-c65106064411"/>
+					<textElement>
+						<font fontName="ipaexg" size="18" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{customerName}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="47" y="152" width="210" height="17" uuid="3fb436f9-fbe7-4a31-a0a8-a791764ce515"/>
+					<textElement>
+						<font fontName="ipaexg" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["何卒ご用命の程、お願い申しあげます。"]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,###.###;#,###.###-" isBlankWhenNull="true">
+					<reportElement x="201" y="184" width="185" height="20" uuid="6c884cf6-cc40-4300-ad84-aed21a1d9123"/>
+					<textElement>
+						<font fontName="ipaexg" size="20" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{totalAmount}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="47" y="208" width="290" height="1" uuid="3289a94e-9732-48fd-b2c0-6be5678a17de"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement x="47" y="211" width="290" height="1" uuid="fef52571-ffd0-4005-8fbc-ce6efcc80b7d"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</line>
+				<textField isStretchWithOverflow="true" pattern="#,###.###;#,###.###-" isBlankWhenNull="true">
+					<reportElement x="201" y="215" width="239" height="10" uuid="ed2465a0-3a13-47c1-9da3-b94161ce9ab3"/>
+					<textElement>
+						<font fontName="ipaexg" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["( 税込　￥　" + $P{totalAmountWithTax} + " )"]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="118" y="249" width="214" height="13" uuid="24ebd288-cfc4-4d07-bc8f-d27899106fa5"/>
+					<textElement>
+						<font fontName="ipaexg" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{propertyName}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="47" y="262" width="350" height="1" uuid="f9ebe71f-a85e-4832-b080-28f044848217"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement x="47" y="276" width="350" height="1" uuid="116d07b8-e6dc-4f73-a2ff-4997f59d75fa"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</line>
+				<textField isBlankWhenNull="true">
+					<reportElement x="118" y="277" width="215" height="10" uuid="cb37ff45-8d31-495a-a427-28fb897aceff"/>
+					<textElement>
+						<font fontName="ipaexg" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{contactUsername}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="47" y="289" width="350" height="1" uuid="34169b83-f981-49f0-a1d2-11c88fb0d203"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</line>
+				<textField>
+					<reportElement x="47" y="313" width="240" height="12" uuid="53206cc5-123e-48d1-86b9-a839b8f78c20"/>
+					<textElement>
+						<font fontName="ipaexg" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["御見積条件"]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="45" y="325" width="55" height="1" uuid="457a8fdb-15a2-4eae-bfae-08158fb3f678"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</line>
+				<textField isBlankWhenNull="true">
+					<reportElement x="159" y="330" width="233" height="10" uuid="79fb9e4d-fd1d-4073-879d-f08b04ceecee"/>
+					<textElement>
+						<font fontName="ipaexg" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{paymentTerms}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="47" y="342" width="400" height="1" uuid="3a44699d-a1cd-479c-b97b-25f072b0bf9d"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</line>
+				<textField isBlankWhenNull="true">
+					<reportElement x="158" y="345" width="230" height="10" uuid="15a60b35-2faf-4887-ac89-15dfcb3bcf8f"/>
+					<textElement>
+						<font fontName="ipaexg" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{estimatedExpirationDate}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="47" y="357" width="400" height="1" uuid="8d3ef60e-77fc-4e58-8b75-6518fec7ef08"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</line>
+				<textField isBlankWhenNull="true">
+					<reportElement x="158" y="359" width="232" height="13" uuid="53daad9a-baa8-4c85-a62b-f2c5639ee6e8"/>
+					<textElement>
+						<font fontName="ipaexg" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{deliveryDate}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="47" y="373" width="400" height="1" uuid="7d43b55e-5ba2-4ac7-9440-bed1e8d8ec34"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</line>
+				<textField isBlankWhenNull="true">
+					<reportElement x="158" y="376" width="230" height="10" uuid="b115b3a6-f2e5-4c97-bc6e-801c85fe0229"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom" rotation="None">
+						<font fontName="ipaexg" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{deliveryPlace}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="47" y="387" width="400" height="1" uuid="c56e4dc6-08d4-4068-859b-90de8ac4ab35"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</line>
+				<textField isBlankWhenNull="true">
+					<reportElement x="157" y="389" width="235" height="12" uuid="fe4ce56f-dd11-4d53-aa72-1f9e8bdbf912"/>
+					<textElement>
+						<font fontName="ipaexg" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{sparePartsCost}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="47" y="401" width="400" height="1" uuid="8cc88bc0-8472-4323-9541-02dc5f1f1c66"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</line>
+				<textField>
+					<reportElement x="47" y="403" width="321" height="11" uuid="697677c1-213f-4b3f-8bb5-1ba751e02da0"/>
+					<textElement>
+						<font fontName="ipaexg" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["※上記の見積り金額には、消費税は含まれていません。"]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="47" y="416" width="400" height="1" uuid="8a86541e-2869-4f0a-8ddd-d269d5eae038"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</line>
+				<textField>
+					<reportElement positionType="Float" x="47" y="419" width="350" height="12" uuid="334ed8be-b99d-4e08-b580-d306361c381d"/>
+					<textElement>
+						<font fontName="ipaexg" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["※使用及数量変更の場合には、更めてお見積り申し上げます。"]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="47" y="432" width="400" height="1" uuid="1fae7247-7566-4b1f-b852-d026fa0071b0"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</line>
+				<textField>
+					<reportElement x="456" y="176" width="220" height="10" uuid="c43eb682-c7cd-44e0-afb5-995959755103"/>
+					<textElement>
+						<font fontName="ipaexg" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["各メーカー照明機器販売、特殊機品設計製作"]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement positionType="Float" x="455" y="215" width="91" height="25" uuid="348faa0b-c821-4cb9-834a-61cb021f31de"/>
+					<textElement>
+						<font fontName="ipaexm" size="14" isBold="false" isItalic="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["株式会社"]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement positionType="FixRelativeToBottom" x="516" y="208" width="159" height="33" uuid="b142b1f7-ba8b-4693-b055-19a1786f19c9"/>
+					<textElement>
+						<font fontName="ipaexg" size="26" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["フジコー"]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="471" y="247" width="111" height="16" uuid="e81822a2-b16a-427e-99f3-8a4f3b11b54b"/>
+					<textElement>
+						<font fontName="ipaexg" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{branchName}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="523" y="269" width="167" height="12" uuid="4d0445e5-4f98-47da-a788-49a9413f1131"/>
+					<textElement>
+						<font fontName="ipaexg" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{postalCode}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="502" y="283" width="181" height="12" uuid="7ce24fda-3ca6-460a-9895-e88e99e7d82c"/>
+					<textElement>
+						<font fontName="ipaexg" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{address}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="523" y="307" width="155" height="12" uuid="89942bfc-b9ea-4597-ad63-e727a1181053"/>
+					<textElement>
+						<font fontName="ipaexg" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{telephone}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="522" y="321" width="156" height="12" uuid="e3d5f6aa-9007-4a52-9044-0e8cde564537"/>
+					<textElement>
+						<font fontName="ipaexg" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{fax}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="528" y="346" width="175" height="13" uuid="10d55c67-ebff-4de9-ab57-ec059226a575"/>
+					<textElement>
+						<font fontName="ipaexg" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["担当　　橋本　俊介"]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Page">
+					<reportElement x="528" y="370" width="56" height="18" uuid="98470358-dd88-4cc0-b010-d2da58073f17"/>
+					<box topPadding="4" bottomPadding="0">
+						<pen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font fontName="ipaexg" size="9" isBold="true"/>
+						<paragraph lineSpacingSize="1.0"/>
+					</textElement>
+					<textFieldExpression><![CDATA["統括部長"]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="528" y="388" width="1" height="44" uuid="37a1a4bb-a69f-42b3-86b6-f86b9bd5848f"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement x="528" y="432" width="55" height="1" uuid="c33d0008-b3ce-4431-94c9-cb0bf57210eb"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement x="584" y="388" width="1" height="44" uuid="55fa5202-6806-42f4-930f-1738c277b448"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</line>
+				<textField>
+					<reportElement x="584" y="370" width="57" height="18" uuid="1007ef9a-08a6-40ea-86fa-cd066f130b8d"/>
+					<box topPadding="4">
+						<pen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font fontName="ipaexg" size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["責任者"]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement stretchType="ElementGroupHeight" x="583" y="432" width="58" height="1" uuid="e197f123-a9d1-4bac-a64b-2e8d95f4dee2"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement x="641" y="388" width="1" height="45" uuid="5795eb39-6565-435d-9792-5c82a480ff3c"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</line>
+				<textField>
+					<reportElement x="641" y="370" width="57" height="18" uuid="35779aca-63b2-4faf-9861-44cae6e9dd94"/>
+					<box topPadding="4">
+						<pen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font fontName="ipaexg" size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["担当者"]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="698" y="388" width="1" height="44" uuid="eb2554f1-9c5d-4592-86ff-f57ef61fe89b"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement x="641" y="432" width="58" height="1" uuid="c2852cee-3414-4f5c-bf22-f42b50d65fa4"/>
+					<graphicElement>
+						<pen lineWidth="0.5"/>
+					</graphicElement>
+				</line>
+				<textField isBlankWhenNull="true">
+					<reportElement stretchType="ElementGroupBottom" x="118" y="264" width="215" height="10" uuid="82f806b7-3622-4049-9d5a-f332b1e74b14"/>
+					<textElement>
+						<font fontName="ipaexg" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{postMessage}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="597" y="25" width="24" height="22" uuid="151bb877-0e96-434a-ade7-24ebc81fccce"/>
+					<textElement>
+						<font fontName="ipaexg" size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[No.]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="624" y="25" width="106" height="16" uuid="0067eafe-1d7a-42f9-b90c-4e6d0bc3d754"/>
+					<textElement>
+						<font fontName="ipaexg" size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{constructionNumber}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="500" y="307" width="23" height="12" uuid="60668046-587b-4d17-a3fd-fb584b5c8aa1"/>
+					<textElement>
+						<font fontName="ipaexg" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TEL]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="500" y="321" width="23" height="12" uuid="10f0af24-acc8-4a59-acf6-c0d03b55b9c8"/>
+					<textElement>
+						<font fontName="ipaexg" isBold="true"/>
+					</textElement>
+					<text><![CDATA[FAX]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="459" y="247" width="14" height="14" uuid="fb26d3bb-0503-4696-87ee-d952ad72cb60"/>
+					<textElement>
+						<font fontName="ipaexg" isBold="true"/>
+					</textElement>
+					<text><![CDATA[□]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="499" y="269" width="23" height="12" uuid="5f1f692d-71d5-4b7b-9733-4bfa6887ff65"/>
+					<textElement>
+						<font fontName="ipaexg" isBold="true"/>
+					</textElement>
+					<text><![CDATA[〒]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="47" y="249" width="55" height="12" uuid="e72547b7-9347-45dd-ba4b-c88ca75fd618"/>
+					<textElement>
+						<font fontName="ipaexg" isBold="true"/>
+					</textElement>
+					<text><![CDATA[物　件　名]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="47" y="264" width="55" height="12" uuid="0ad27d0a-6d1b-42b9-af3e-831d711bcb9c"/>
+					<textElement>
+						<font fontName="ipaexg" isBold="true"/>
+					</textElement>
+					<text><![CDATA[所　　　属]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="46" y="278" width="55" height="12" uuid="3ae92edf-f6b0-4497-85e0-c8d61ae5290c"/>
+					<textElement>
+						<font fontName="ipaexg" isBold="true"/>
+					</textElement>
+					<text><![CDATA[依頼担当者]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="49" y="185" width="162" height="25" uuid="ecaba9f8-14fc-4a25-b3a2-371719903798"/>
+					<textElement>
+						<font fontName="ipaexg" size="20" isBold="true"/>
+					</textElement>
+					<text><![CDATA[合計金額　　￥]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="47" y="345" width="85" height="12" uuid="efcff784-8342-40c3-8b7e-76f447839be1"/>
+					<textElement>
+						<font fontName="ipaexg" isBold="true"/>
+					</textElement>
+					<text><![CDATA[２．見積有効期限]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="47" y="360" width="85" height="12" uuid="8e444ae0-863f-4b3b-bca6-dcbfd3f2f0f0"/>
+					<textElement>
+						<font fontName="ipaexg" isBold="true"/>
+					</textElement>
+					<text><![CDATA[３．納　　　　期]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="47" y="374" width="85" height="12" uuid="d1f841ad-6794-4c3e-9dbe-9441e2649bd6"/>
+					<textElement>
+						<font fontName="ipaexg" isBold="true"/>
+					</textElement>
+					<text><![CDATA[４．納 入 場  所]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="47" y="388" width="85" height="12" uuid="03a72d63-2d97-4f8e-a298-3ac3b262b3b8"/>
+					<textElement>
+						<font fontName="ipaexg" isBold="true"/>
+					</textElement>
+					<text><![CDATA[５．予 備 品  費]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="47" y="330" width="85" height="12" uuid="219870d5-f107-4f52-bfeb-9e86d62b178d"/>
+					<textElement>
+						<font fontName="ipaexg" isBold="true"/>
+					</textElement>
+					<text><![CDATA[１．お支払い条件]]></text>
+				</staticText>
+			</frame>
+		</band>
+		<band height="420" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="799" height="120" uuid="fd128ddc-e3fc-4fd7-a395-94ddbb45b2bb"/>
+				<componentElement>
+					<reportElement x="3" y="37" width="780" height="40" uuid="ed965572-ea7d-42fc-bbbc-51790a53a8a1">
+						<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+						<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+						<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+						<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+					</reportElement>
+					<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+						<datasetRun subDataset="Dataset1" uuid="1e339078-5cb9-42fb-bfdf-80e85bab3923">
+							<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{quotationHeaders})]]></dataSourceExpression>
+						</datasetRun>
+						<jr:column width="40" uuid="cdb3f980-ddd2-4a1f-a824-9b5250c10943">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+							<jr:columnHeader style="Table_CH" height="20" rowSpan="1">
+								<box padding="4"/>
+								<staticText>
+									<reportElement x="0" y="0" width="32" height="12" uuid="c8570f02-f5fb-4626-b8d9-931ad67bfa3d"/>
+									<box>
+										<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									</box>
+									<textElement textAlignment="Center">
+										<font fontName="ipaexm"/>
+									</textElement>
+									<text><![CDATA[No.]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="20">
+								<box padding="4"/>
+								<textField>
+									<reportElement x="0" y="0" width="32" height="12" uuid="96543999-23b3-4ac6-ac70-6035be19f9fa"/>
+									<textElement textAlignment="Center">
+										<font fontName="ipaexm"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="20" uuid="9ca7182d-34c5-427f-96e5-ba4e0d2539cf">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+							<jr:columnHeader style="Table_CH" height="20" rowSpan="1"/>
+							<jr:detailCell style="Table_TD" height="20"/>
+						</jr:column>
+						<jr:column width="160" uuid="4aba6355-10f5-48dd-8f5f-ca201c57d0cf">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+							<jr:columnHeader style="Table_CH" height="20" rowSpan="1">
+								<box padding="4"/>
+								<staticText>
+									<reportElement x="0" y="0" width="152" height="12" uuid="36ecb7ce-036a-4b34-b095-4159f6b19986"/>
+									<textElement textAlignment="Center">
+										<font fontName="ipaexm"/>
+									</textElement>
+									<text><![CDATA[名         称]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="20">
+								<box padding="4"/>
+								<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+									<reportElement x="0" y="0" width="152" height="12" uuid="99e591e7-6184-42ec-aaa7-5e5ee8635d35"/>
+									<textElement textAlignment="Center">
+										<font fontName="ipaexm"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="180" uuid="59e72bb8-6a4f-4ac0-b01e-e107064e887c">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+							<jr:columnHeader style="Table_CH" height="20" rowSpan="1">
+								<box padding="4"/>
+								<staticText>
+									<reportElement x="0" y="0" width="172" height="12" uuid="e958569f-c926-4f5c-a4b4-0366ac96a599"/>
+									<textElement textAlignment="Center">
+										<font fontName="ipaexm"/>
+									</textElement>
+									<text><![CDATA[品         名]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="20">
+								<box padding="4"/>
+								<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+									<reportElement x="0" y="0" width="172" height="12" uuid="7d1ec000-288c-4549-82c9-582cbe7a3d86"/>
+									<textElement textAlignment="Center">
+										<font fontName="ipaexm"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{productName}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="58" uuid="4339b390-d4d3-4f8e-9475-1005db59b5ca">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
+							<jr:columnHeader style="Table_CH" height="20" rowSpan="1">
+								<box padding="4"/>
+								<staticText>
+									<reportElement x="0" y="0" width="50" height="12" uuid="c9a72949-e363-440f-b34f-2aa4a7c3c103"/>
+									<textElement textAlignment="Center">
+										<font fontName="ipaexm"/>
+									</textElement>
+									<text><![CDATA[数量 ]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="20">
+								<box padding="4"/>
+								<textField pattern="#,###.###;#,###.###-" isBlankWhenNull="true">
+									<reportElement x="0" y="0" width="50" height="12" uuid="8cd8d866-3216-494a-8887-3b6c73027bf1"/>
+									<textElement textAlignment="Center">
+										<font fontName="ipaexm"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{quantity}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="58" uuid="e296010c-a1ad-4590-bb96-37854e946d31">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column6"/>
+							<jr:columnHeader style="Table_CH" height="20" rowSpan="1">
+								<box padding="4"/>
+								<staticText>
+									<reportElement x="0" y="0" width="50" height="12" uuid="b06f599e-4074-4d07-af16-90b3ba1c47b7"/>
+									<textElement textAlignment="Center">
+										<font fontName="ipaexm"/>
+									</textElement>
+									<text><![CDATA[単位]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="20">
+								<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+								<box padding="4"/>
+								<textField isBlankWhenNull="true">
+									<reportElement x="0" y="0" width="50" height="12" uuid="015520ce-40d2-41da-8aab-28954f1be9e6"/>
+									<textElement textAlignment="Center">
+										<font fontName="ipaexm"/>
+									</textElement>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="66" uuid="43ea3050-f303-430f-8cd9-a1bc141dc0be">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column7"/>
+							<jr:columnHeader style="Table_CH" height="20" rowSpan="1">
+								<box padding="4"/>
+								<staticText>
+									<reportElement x="0" y="0" width="58" height="12" uuid="9ce098d6-18ba-49c3-921b-6a7393c51891"/>
+									<textElement textAlignment="Center">
+										<font fontName="ipaexm"/>
+									</textElement>
+									<text><![CDATA[単  価]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="20">
+								<box padding="4"/>
+								<textField pattern="#,###.###;#,###.###-" isBlankWhenNull="true">
+									<reportElement x="0" y="0" width="58" height="12" uuid="e2193566-739a-4487-b61f-09c2ae6fb713"/>
+									<textElement textAlignment="Center">
+										<font fontName="ipaexm"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{unitPrice}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="70" uuid="bf24eae8-20e5-43fc-8159-05dec437f076">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column8"/>
+							<jr:columnHeader style="Table_CH" height="20" rowSpan="1">
+								<box padding="4"/>
+								<staticText>
+									<reportElement x="0" y="0" width="62" height="12" uuid="cfe43184-3573-4c4c-a233-c1f993594ae8"/>
+									<textElement textAlignment="Center">
+										<font fontName="ipaexm"/>
+									</textElement>
+									<text><![CDATA[金   額]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="20">
+								<box padding="4"/>
+								<textField pattern="#,###.###;#,###.###-" isBlankWhenNull="true">
+									<reportElement x="0" y="0" width="62" height="12" uuid="c531b2a4-0fd3-4358-bdb6-101d66608093"/>
+									<textElement textAlignment="Center">
+										<font fontName="ipaexm"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="59" uuid="9f5e8fb4-128a-4ffe-8a68-44b7b9e43d73">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column9"/>
+							<jr:columnHeader style="Table_CH" height="20" rowSpan="1">
+								<box padding="4"/>
+								<staticText>
+									<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="51" height="12" uuid="10b89180-20b9-45b6-adae-5ea8674e0d0d"/>
+									<textElement textAlignment="Center">
+										<font fontName="ipaexm"/>
+									</textElement>
+									<text><![CDATA[標準単価]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="20">
+								<box padding="4"/>
+								<textField pattern="#,###.###;#,###.###-" isBlankWhenNull="true">
+									<reportElement x="0" y="0" width="51" height="12" uuid="1b1ec014-d6a0-4875-968a-7f1056f4b1c1"/>
+									<textElement textAlignment="Center">
+										<font fontName="ipaexm"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{standardUnitPrice}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="70" uuid="c2bcccc2-1f4d-404e-95b2-7491e09549ac">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column10"/>
+							<jr:columnHeader style="Table_CH" height="20" rowSpan="1">
+								<box padding="4"/>
+								<staticText>
+									<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="62" height="12" uuid="56acc443-b14c-4260-8eb9-c7637aaf2a96"/>
+									<textElement textAlignment="Center">
+										<font fontName="ipaexm"/>
+									</textElement>
+									<text><![CDATA[備  考]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="20">
+								<box padding="4"/>
+								<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+									<reportElement x="0" y="0" width="62" height="12" uuid="3870364f-2d94-42e4-99f6-17f916b01ed5"/>
+									<textElement textAlignment="Center">
+										<font fontName="ipaexm"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{remarks}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:table>
+				</componentElement>
+				<textField>
+					<reportElement positionType="Float" x="3" y="77" width="400" height="20" uuid="87a014b0-74d3-4fc0-b7d5-7affc07b05a0"/>
+					<box topPadding="3" leftPadding="3" bottomPadding="3" rightPadding="3">
+						<pen lineWidth="0.5"/>
+					</box>
+					<textElement>
+						<font fontName="ipaexm"/>
+					</textElement>
+					<textFieldExpression><![CDATA["  合   計"]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement positionType="Float" x="403" y="77" width="58" height="20" uuid="becb81d0-ec15-4bdf-94ff-4298ba073d6e"/>
+					<box padding="3">
+						<pen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font fontName="ipaexm"/>
+					</textElement>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement positionType="Float" x="461" y="77" width="58" height="20" uuid="89398bc7-7e59-4b9b-85e7-858f74c09f34"/>
+					<box padding="3">
+						<pen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font fontName="ipaexm"/>
+					</textElement>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement positionType="Float" x="519" y="77" width="66" height="20" uuid="a46ae831-cb9e-44db-9bc9-cf63dc7521bd"/>
+					<box padding="3">
+						<pen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font fontName="ipaexm"/>
+					</textElement>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement positionType="Float" x="655" y="77" width="59" height="20" uuid="3f06e8ce-00cd-489a-8f55-3992ea3b4022"/>
+					<box padding="3">
+						<pen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font fontName="ipaexm"/>
+					</textElement>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement positionType="Float" x="714" y="77" width="70" height="20" uuid="e755c4b7-914e-4a85-a4c5-4ddfcd59053b"/>
+					<box padding="3">
+						<pen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font fontName="ipaexm"/>
+					</textElement>
+				</textField>
+				<staticText>
+					<reportElement x="18" y="16" width="52" height="15" uuid="bf724e29-445e-4e61-bcff-6a1d940574d9"/>
+					<textElement markup="styled">
+						<font fontName="ipaexm" size="8"/>
+					</textElement>
+					<text><![CDATA[工　　事No. ]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="79" y="16" width="70" height="14" uuid="4712a3e6-4a08-474b-9124-3d492243f9a9"/>
+					<textElement>
+						<font fontName="ipaexm" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{constructionNumber}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="157" y="16" width="26" height="14" uuid="c962bcb5-d870-4ced-92ef-ed1a0ced1d93"/>
+					<textElement>
+						<font fontName="ipaexm" size="8"/>
+					</textElement>
+					<text><![CDATA[物件名]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="191" y="16" width="100" height="14" uuid="1f989409-0031-4002-a5b0-16c1ae328629"/>
+					<textElement>
+						<font fontName="ipaexm" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{propertyName}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,###.###;#,###.###-" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="585" y="77" width="70" height="20" uuid="a2ec5fa5-4420-4590-bb1b-2233e7c62be0"/>
+					<box padding="3">
+						<pen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font fontName="ipaexm"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{totalAmount}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+		<band height="380" splitType="Stretch">
+			<componentElement>
+				<reportElement x="-5" y="0" width="807" height="380" uuid="512a7a28-b693-42c4-8144-8582b4485042"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="Dataset2" uuid="e2b9818d-fb2b-41cc-8608-f09da40dfe12">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{quotationDetails})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="380" width="807">
+						<textField>
+							<reportElement positionType="Float" x="12" y="72" width="400" height="20" uuid="417a01e3-a396-4941-a5fc-3dd527455f2d"/>
+							<box topPadding="3" leftPadding="3" bottomPadding="3" rightPadding="3">
+								<pen lineWidth="0.5"/>
+							</box>
+							<textElement>
+								<font fontName="ipaexm"/>
+							</textElement>
+							<textFieldExpression><![CDATA["  合   計"]]></textFieldExpression>
+						</textField>
+						<textField isBlankWhenNull="true">
+							<reportElement positionType="Float" x="412" y="72" width="58" height="20" uuid="d855ef9f-3f64-4c6e-9148-c9bf1d30f461"/>
+							<box padding="3">
+								<pen lineWidth="0.5"/>
+							</box>
+							<textElement textAlignment="Center">
+								<font fontName="ipaexm"/>
+							</textElement>
+						</textField>
+						<textField isBlankWhenNull="true">
+							<reportElement positionType="Float" x="470" y="72" width="58" height="20" uuid="c112b4a2-1798-400a-a27a-5bf8e6cbb039"/>
+							<box padding="3">
+								<pen lineWidth="0.5"/>
+							</box>
+							<textElement textAlignment="Center">
+								<font fontName="ipaexm"/>
+							</textElement>
+						</textField>
+						<textField pattern="#,###.###;#,###.###-" isBlankWhenNull="true">
+							<reportElement positionType="Float" x="594" y="72" width="70" height="20" uuid="cce5039e-9025-4716-aa60-69c190956751"/>
+							<box padding="3">
+								<pen lineWidth="0.5"/>
+							</box>
+							<textElement textAlignment="Center">
+								<font fontName="ipaexm"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{totalAmount}]]></textFieldExpression>
+						</textField>
+						<textField isBlankWhenNull="true">
+							<reportElement positionType="Float" x="664" y="72" width="59" height="20" uuid="3be85b97-8fad-465d-8829-8dbc58e35d89"/>
+							<box padding="3">
+								<pen lineWidth="0.5"/>
+							</box>
+							<textElement textAlignment="Center">
+								<font fontName="ipaexm"/>
+							</textElement>
+						</textField>
+						<textField isBlankWhenNull="true">
+							<reportElement positionType="Float" x="723" y="72" width="70" height="20" uuid="28faafca-512a-4d04-83ae-a54a3fe773ec"/>
+							<box padding="3">
+								<pen lineWidth="0.5"/>
+							</box>
+							<textElement textAlignment="Center">
+								<font fontName="ipaexm"/>
+							</textElement>
+						</textField>
+						<staticText>
+							<reportElement x="401" y="13" width="20" height="15" uuid="cc244149-9620-4cd2-b302-de8599896346"/>
+							<textElement>
+								<font fontName="ipaexm" size="8"/>
+							</textElement>
+							<text><![CDATA[区分]]></text>
+						</staticText>
+						<textField isBlankWhenNull="true">
+							<reportElement x="431" y="13" width="100" height="15" uuid="b2efbae7-61bc-4fb8-9ac7-85623feb523b"/>
+							<textElement>
+								<font fontName="ipaexm" size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{constructionCategoryName}]]></textFieldExpression>
+						</textField>
+						<staticText>
+							<reportElement x="27" y="13" width="52" height="15" uuid="8f994ec6-02fc-4cc2-8c39-e03bd960a663"/>
+							<textElement markup="styled">
+								<font fontName="ipaexm" size="8"/>
+							</textElement>
+							<text><![CDATA[工　　事No. ]]></text>
+						</staticText>
+						<textField isBlankWhenNull="true">
+							<reportElement x="88" y="13" width="70" height="14" uuid="0ab6e0c6-476e-4b47-b3ef-1b1c0fae428b"/>
+							<textElement>
+								<font fontName="ipaexm" size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{constructionNumber}]]></textFieldExpression>
+						</textField>
+						<staticText>
+							<reportElement x="166" y="13" width="26" height="14" uuid="fbb84e49-3c2e-42da-b333-1d2a5ce9e5c5"/>
+							<textElement>
+								<font fontName="ipaexm" size="8"/>
+							</textElement>
+							<text><![CDATA[物件名]]></text>
+						</staticText>
+						<textField isBlankWhenNull="true">
+							<reportElement x="200" y="13" width="100" height="14" uuid="186c4edc-5ac8-4487-ae80-19c4b9ae20de"/>
+							<textElement>
+								<font fontName="ipaexm" size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{propertyName}]]></textFieldExpression>
+						</textField>
+						<componentElement>
+							<reportElement x="12" y="32" width="780" height="40" uuid="97210d00-1a09-4143-9547-eceaeea485b7">
+								<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+								<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+								<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+								<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+							</reportElement>
+							<jr:table>
+								<datasetRun subDataset="Dataset1" uuid="e4d13dbb-eaf1-43c8-8119-ac600a1a10fc">
+									<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{quotationItems})]]></dataSourceExpression>
+								</datasetRun>
+								<jr:column width="40" uuid="c4f01973-2359-42e1-946b-b9189c027a00">
+									<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+									<jr:columnHeader style="Table_CH" height="20" rowSpan="1">
+										<box padding="4"/>
+										<staticText>
+											<reportElement x="0" y="0" width="32" height="12" uuid="5df3e0f1-a6d9-46dd-a545-0786a7a6d374"/>
+											<box>
+												<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+												<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+												<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+												<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+											</box>
+											<textElement textAlignment="Center">
+												<font fontName="ipaexm"/>
+											</textElement>
+											<text><![CDATA[No.]]></text>
+										</staticText>
+									</jr:columnHeader>
+									<jr:detailCell style="Table_TD" height="20">
+										<box padding="4"/>
+										<textField>
+											<reportElement x="0" y="0" width="32" height="12" uuid="ad10f6b0-e528-45de-910b-14caebe8905a"/>
+											<textElement textAlignment="Center">
+												<font fontName="ipaexm"/>
+											</textElement>
+											<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+										</textField>
+									</jr:detailCell>
+								</jr:column>
+								<jr:column width="20" uuid="46ad5386-481f-4ad1-8109-63a6967c3ad4">
+									<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+									<jr:columnHeader style="Table_CH" height="20" rowSpan="1"/>
+									<jr:detailCell style="Table_TD" height="20"/>
+								</jr:column>
+								<jr:column width="160" uuid="29b4f5de-b9ae-4401-b614-2f421e6ea7e5">
+									<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+									<jr:columnHeader style="Table_CH" height="20" rowSpan="1">
+										<box padding="4"/>
+										<staticText>
+											<reportElement x="0" y="0" width="152" height="12" uuid="6fe127f2-0c84-414a-bb36-45f8357aadab"/>
+											<textElement textAlignment="Center">
+												<font fontName="ipaexm"/>
+											</textElement>
+											<text><![CDATA[名         称]]></text>
+										</staticText>
+									</jr:columnHeader>
+									<jr:detailCell style="Table_TD" height="20">
+										<box padding="4"/>
+										<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+											<reportElement x="0" y="0" width="152" height="12" uuid="32b5a451-471a-4256-bcbe-76125edb8a70"/>
+											<textElement textAlignment="Center">
+												<font fontName="ipaexm"/>
+											</textElement>
+											<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+										</textField>
+									</jr:detailCell>
+								</jr:column>
+								<jr:column width="180" uuid="738f4a40-a7c0-4f67-a7e8-7853291b6c65">
+									<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+									<jr:columnHeader style="Table_CH" height="20" rowSpan="1">
+										<box padding="4"/>
+										<staticText>
+											<reportElement x="0" y="0" width="172" height="12" uuid="3b7116a7-42b6-4f15-a999-bfb5598e5d44"/>
+											<textElement textAlignment="Center">
+												<font fontName="ipaexm"/>
+											</textElement>
+											<text><![CDATA[品         名]]></text>
+										</staticText>
+									</jr:columnHeader>
+									<jr:detailCell style="Table_TD" height="20">
+										<box padding="4"/>
+										<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+											<reportElement x="0" y="0" width="172" height="12" uuid="dd28f8bf-c65f-4971-9d20-9dc22face91d"/>
+											<textElement textAlignment="Center">
+												<font fontName="ipaexm"/>
+											</textElement>
+											<textFieldExpression><![CDATA[$F{productName}]]></textFieldExpression>
+										</textField>
+									</jr:detailCell>
+								</jr:column>
+								<jr:column width="58" uuid="962fdac6-a54a-4c93-909a-46b41e4018b6">
+									<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
+									<jr:columnHeader style="Table_CH" height="20" rowSpan="1">
+										<box padding="4"/>
+										<staticText>
+											<reportElement x="0" y="0" width="50" height="12" uuid="1cd5271a-4270-4564-8416-f682fc3d95cc"/>
+											<textElement textAlignment="Center">
+												<font fontName="ipaexm"/>
+											</textElement>
+											<text><![CDATA[数量 ]]></text>
+										</staticText>
+									</jr:columnHeader>
+									<jr:detailCell style="Table_TD" height="20">
+										<box padding="4"/>
+										<textField pattern="#,###.###;#,###.###-" isBlankWhenNull="true">
+											<reportElement x="0" y="0" width="50" height="12" uuid="2795d1f4-c07f-4ba8-81e9-b9cdf59c2bc4"/>
+											<textElement textAlignment="Center">
+												<font fontName="ipaexm"/>
+											</textElement>
+											<textFieldExpression><![CDATA[$F{quantity}]]></textFieldExpression>
+										</textField>
+									</jr:detailCell>
+								</jr:column>
+								<jr:column width="58" uuid="03ddbbfe-fe8e-4c39-8b0e-adddf3be2eef">
+									<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column6"/>
+									<jr:columnHeader style="Table_CH" height="20" rowSpan="1">
+										<box padding="4"/>
+										<staticText>
+											<reportElement x="0" y="0" width="50" height="12" uuid="d82da1a8-617a-4898-b9c5-55b21b39cc90"/>
+											<textElement textAlignment="Center">
+												<font fontName="ipaexm"/>
+											</textElement>
+											<text><![CDATA[単位]]></text>
+										</staticText>
+									</jr:columnHeader>
+									<jr:detailCell style="Table_TD" height="20">
+										<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+										<box padding="4"/>
+										<textField isBlankWhenNull="true">
+											<reportElement x="0" y="0" width="50" height="12" uuid="4434fda3-7064-4de0-af12-2b47330494c8"/>
+											<textElement textAlignment="Center">
+												<font fontName="ipaexm"/>
+											</textElement>
+											<textFieldExpression><![CDATA[$F{unit}]]></textFieldExpression>
+										</textField>
+									</jr:detailCell>
+								</jr:column>
+								<jr:column width="66" uuid="2137f1dd-403e-4989-bff9-a8b6d1345c67">
+									<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column7"/>
+									<jr:columnHeader style="Table_CH" height="20" rowSpan="1">
+										<box padding="4"/>
+										<staticText>
+											<reportElement x="0" y="0" width="58" height="12" uuid="cbc71d6b-f474-4331-a3f8-8dfad03f0db4"/>
+											<textElement textAlignment="Center">
+												<font fontName="ipaexm"/>
+											</textElement>
+											<text><![CDATA[単  価]]></text>
+										</staticText>
+									</jr:columnHeader>
+									<jr:detailCell style="Table_TD" height="20">
+										<box padding="4"/>
+										<textField pattern="#,###.###;#,###.###-" isBlankWhenNull="true">
+											<reportElement x="0" y="0" width="58" height="12" uuid="ddc072e1-5537-4d1a-ae7c-db87e9240930"/>
+											<textElement textAlignment="Center">
+												<font fontName="ipaexm"/>
+											</textElement>
+											<textFieldExpression><![CDATA[$F{unitPrice}]]></textFieldExpression>
+										</textField>
+									</jr:detailCell>
+								</jr:column>
+								<jr:column width="70" uuid="3cdf018e-816b-496d-b85e-d34f62645a5c">
+									<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column8"/>
+									<jr:columnHeader style="Table_CH" height="20" rowSpan="1">
+										<box padding="4"/>
+										<staticText>
+											<reportElement x="0" y="0" width="62" height="12" uuid="262e9d47-26bb-49c7-8751-513cf1ef5a3a"/>
+											<textElement textAlignment="Center">
+												<font fontName="ipaexm"/>
+											</textElement>
+											<text><![CDATA[金   額]]></text>
+										</staticText>
+									</jr:columnHeader>
+									<jr:detailCell style="Table_TD" height="20">
+										<box padding="4"/>
+										<textField pattern="#,###.###;#,###.###-" isBlankWhenNull="true">
+											<reportElement x="0" y="0" width="62" height="12" uuid="a03f7634-e0fe-4284-96ac-71852d98e72c"/>
+											<textElement textAlignment="Center">
+												<font fontName="ipaexm"/>
+											</textElement>
+											<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+										</textField>
+									</jr:detailCell>
+								</jr:column>
+								<jr:column width="59" uuid="b9a968ae-59d0-4412-a83d-d2f45279c978">
+									<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column9"/>
+									<jr:columnHeader style="Table_CH" height="20" rowSpan="1">
+										<box padding="4"/>
+										<staticText>
+											<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="51" height="12" uuid="c1879344-6f3e-43d4-8fbb-b1e7834e8dbf"/>
+											<textElement textAlignment="Center">
+												<font fontName="ipaexm"/>
+											</textElement>
+											<text><![CDATA[標準単価]]></text>
+										</staticText>
+									</jr:columnHeader>
+									<jr:detailCell style="Table_TD" height="20">
+										<box padding="4"/>
+										<textField pattern="#,###.###;#,###.###-" isBlankWhenNull="true">
+											<reportElement x="0" y="0" width="51" height="12" uuid="82ebfbaa-f23a-405f-a45e-a06c57df7a25"/>
+											<textElement textAlignment="Center">
+												<font fontName="ipaexm"/>
+											</textElement>
+											<textFieldExpression><![CDATA[$F{standardUnitPrice}]]></textFieldExpression>
+										</textField>
+									</jr:detailCell>
+								</jr:column>
+								<jr:column width="70" uuid="7784fceb-89eb-40ce-998c-2fe294ec74eb">
+									<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column10"/>
+									<jr:columnHeader style="Table_CH" height="20" rowSpan="1">
+										<box padding="4"/>
+										<staticText>
+											<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="62" height="12" uuid="283c8937-83bc-4d27-9203-2ec0533260cc"/>
+											<textElement textAlignment="Center">
+												<font fontName="ipaexm"/>
+											</textElement>
+											<text><![CDATA[備  考]]></text>
+										</staticText>
+									</jr:columnHeader>
+									<jr:detailCell style="Table_TD" height="20">
+										<box padding="4"/>
+										<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+											<reportElement x="0" y="0" width="62" height="12" uuid="46319cc6-bad2-4ba2-870a-68e7e839db48"/>
+											<textElement textAlignment="Center">
+												<font fontName="ipaexm"/>
+											</textElement>
+											<textFieldExpression><![CDATA[$F{remarks}]]></textFieldExpression>
+										</textField>
+									</jr:detailCell>
+								</jr:column>
+							</jr:table>
+						</componentElement>
+						<textField isBlankWhenNull="true">
+							<reportElement positionType="Float" x="528" y="72" width="66" height="20" uuid="16aa64d8-c5cf-472e-bc25-889ec01c98df"/>
+							<box padding="3">
+								<pen lineWidth="0.5"/>
+							</box>
+							<textElement textAlignment="Center">
+								<font fontName="ipaexm"/>
+							</textElement>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+		</band>
+	</detail>
+</jasperReport>
